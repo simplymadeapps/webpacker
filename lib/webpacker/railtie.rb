@@ -5,8 +5,8 @@ require 'webpacker/digests'
 
 class Webpacker::Engine < ::Rails::Engine
   initializer :webpacker do |app|
-    ActiveSupport.on_load :action_controller do
-      ActionController::Base.helper Webpacker::Helper
+    ActiveSupport.on_load :action_view do
+      include Webpacker::Helper
     end
 
     app.config.x.webpacker[:packs_dist_dir] ||= 'packs'
